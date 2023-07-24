@@ -1,0 +1,28 @@
+{% extends 'tienda/base.html' %}
+{% block body %}
+{% if success %}
+    <div class="alert alert-success" role="alert">
+        Se agrego la categoria exitosamente
+        <a href="{% url 'registrar_producto' %}" class="alert-link">Ir a Registrar Producto           </a>
+    </div>
+{% else %}
+<div class="row justify-content-center">
+    <div class="col-6">
+        
+            <div class="card border-primary mb-3" >
+                <div class="card-header">
+                    <i class="fa-solid fa-sitemap fa-lg"></i> Registro de Categoria
+                </div>
+                <div class="card-body">
+                    <form  method="POST">
+                        {% csrf_token %}
+                        {{ form.as_p }}
+                    <center> <button type="submit" class="btn btn-primary" id="submit">Guardar Categoria</button></center>
+                    
+                    </form>
+                </div>
+            </div>
+    </div>
+</div>
+{% endif %} 
+{% endblock %}
